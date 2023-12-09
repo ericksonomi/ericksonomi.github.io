@@ -35510,7 +35510,7 @@ var $async$aEJ=A.Y(function(c,d){if(c===1)return A.U(d,r)
 while(true)switch(s){case 0:p=t.N
 o=A.aQ(["Content-type","application/json","access-token",b],p,p)
 s=3
-return A.a3(A.b7t(A.lL("https://dev-clinic.onrender.comapi/"+a,0,null),o),$async$aEJ)
+return A.a3(A.b7t(A.lL("https://dev-clinic.onrender.com/api/"+a,0,null),o),$async$aEJ)
 case 3:q=d
 s=1
 break
@@ -35523,7 +35523,7 @@ s=p}while(true)switch(s){case 0:p=4
 k=t.N
 n=A.aQ(["Content-type","application/json","access-token",d],k,k)
 k=b==="null"||b==="0"
-j="https://dev-clinic.onrender.comapi/"+a
+j="https://dev-clinic.onrender.com/api/"+a
 s=k?7:9
 break
 case 7:s=10
