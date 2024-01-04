@@ -27792,7 +27792,7 @@ m=n.gw0()
 if(m.length!==0)m=A.Qa(n.gw0(),!0,"1234567890123456")
 p.toString
 s=3
-return A.Z(A.aRf("http://localhost:3000/res/"+p,m),$async$fs)
+return A.Z(A.aRf("https://dev-clinic.onrender.com/res/"+p,m),$async$fs)
 case 3:l=e
 k=B.b3.eI(0,A.Qa(A.aQN(A.aPj(l.e).c.a.h(0,"charset")).eI(0,l.w),!1,"1234567890123456"))
 j=J.J(k)
@@ -27812,7 +27812,7 @@ while(true)switch(s){case 0:n=$.aSU()
 m=n.gw0()
 if(m.length!==0)m=A.Qa(n.gw0(),!0,"1234567890123456")
 s=3
-return A.Z(A.acM("http://localhost:3000/res/"+d,B.e.k(b),B.b3.Oz(c,null),m),$async$kY)
+return A.Z(A.acM("https://dev-clinic.onrender.com/res/"+d,B.e.k(b),B.b3.Oz(c,null),m),$async$kY)
 case 3:p=f
 o=B.b3.yI(0,A.Qa(A.aQN(A.aPj(p.e).c.a.h(0,"charset")).eI(0,p.w),!1,"1234567890123456"),null)
 n=J.J(o)
@@ -27829,7 +27829,7 @@ while(true)switch(s){case 0:m=$.aSU()
 l=m.gw0()
 if(l.length!==0)l=A.Qa(m.gw0(),!0,"1234567890123456")
 s=3
-return A.Z(A.aQG("http://localhost:3000/res/"+a,l),$async$aQM)
+return A.Z(A.aQG("https://dev-clinic.onrender.com/res/"+a,l),$async$aQM)
 case 3:p=c
 o=B.b3.yI(0,A.Qa(A.aQN(A.aPj(p.e).c.a.h(0,"charset")).eI(0,p.w),!1,"1234567890123456"),null)
 m=J.J(o)
@@ -27844,7 +27844,7 @@ acS(a){return A.brK(a)},
 brK(a){var s=0,r=A.R(t.VX),q,p=2,o,n,m,l,k,j,i,h,g,f,e,d,c,b
 var $async$acS=A.N(function(a0,a1){if(a0===1){o=a1
 s=p}while(true)switch(s){case 0:p=4
-n=A.bgp("POST",A.jj("http://localhost:3000/uploadfile?folderName=imagenes"))
+n=A.bgp("POST",A.jj("https://dev-clinic.onrender.com/uploadfile?folderName=imagenes"))
 j=n.y
 i=A.b5Q(new A.nB(A.aVi(a,t.Cm)))
 h=A.Ws("application","octet-stream",null)
@@ -103195,7 +103195,7 @@ p.push(A.cn(q,r,r,r,r,A.d_(r,r,B.r,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,
 p.push(B.ex)
 q=$.cE().x
 if(q.length!==0){s=!(A.aE(a,r,t.l).w.a.a<768)?44:40
-s=A.aUm("http://localhost:3000/"+q,s)
+s=A.aUm("https://dev-clinic.onrender.com/"+q,s)
 q=s}else q=A.rc("assets/images/profile_nopicture.png",!(A.aE(a,r,t.l).w.a.a<768)?44:40,r)
 p.push(q)
 return A.aF(r,A.bq(p,B.n,B.q,B.o,r),B.i,r,r,r,r,r,r,new A.af(0,0,16,0),r,r,r,r)}}
@@ -103290,7 +103290,7 @@ A.B9.prototype={}
 A.vj.prototype={
 af(){return new A.a4A(B.k)}}
 A.a4A.prototype={
-aF(){var s,r,q,p,o,n,m,l,k,j,i,h,g,f=this,e="http://localhost:3000",d="query",c=f.c
+aF(){var s,r,q,p,o,n,m,l,k,j,i,h,g,f=this,e="https://dev-clinic.onrender.com",d="query",c=f.c
 c.toString
 A.acE(c,!0)
 f.aS()
@@ -103303,7 +103303,7 @@ o=q.gfG(q)
 n=$.aQq.aN(0,p)&&$.aQq.h(0,p).d.aN(0,o)
 m=r.h(0,"forceNew")===!0||r.h(0,"force new connection")===!0||!1===r.h(0,"multiplex")||n
 l=A.ac("io")
-if(m){$.baa().cj(B.E,"ignoring socket cache for http://localhost:3000",null,null)
+if(m){$.baa().cj(B.E,"ignoring socket cache for https://dev-clinic.onrender.com",null,null)
 l.b=A.b_X(r,e)}else{k=$.aQq.h(0,p)
 if(k==null){k=A.b_X(r,e)
 $.aQq.m(0,p,k)}l.b=k}if(q.gm9(q).length!==0&&r.h(0,d)==null)r.m(0,d,q.gm9(q))
@@ -104259,7 +104259,7 @@ return A.ig(A.aF(o,A.bM(r,B.bY,B.q,B.o),B.i,o,o,o,o,o,o,o,new A.af(22,22,22,22),
 aHv(a,b,c){var s,r,q=null,p=t.p,o=A.a([],p),n=t.l
 if(!(A.aE(b,q,n).w.a.a<768)){s=a.x
 if(s.length!==0){r=!(A.aE(b,q,n).w.a.a<768)?44:40
-r=A.aUm("http://localhost:3000/"+s,r)
+r=A.aUm("https://dev-clinic.onrender.com/"+s,r)
 s=r}else s=A.rc("assets/images/profile_nopicture.png",!(A.aE(b,q,n).w.a.a<768)?44:40,q)
 o.push(s)}o.push(A.dv(new A.bn(B.mN,A.cn(a.b,q,q,q,q,q,q,q,q),q),1))
 o=A.a([A.nR(A.bq(o,B.n,B.q,B.o,q))],t.sa)
@@ -104505,7 +104505,7 @@ q=l.a.a.length!==0&&i.a.a.length!==0&&j.a.a.length!==0&&h.a.a.length!==0&&g.a.a.
 o.push(A.bq(A.a([s,B.fK,A.lb(A.aH("Save",d,!1,B.h,16),q,r)],p),B.n,B.d0,B.o,d))
 return A.wk(d,A.ig(A.aF(d,A.iv(o,d,d,d,d,B.Y,!1),B.i,d,d,d,d,d,d,new A.af(30,30,30,30),d,d,d,d),d,new A.af(16,16,16,16)),d,d)},
 ga2o(){var s=this,r=null,q=A.a([],t.p),p=s.a.c.x
-if(p.length!==0)q.push(A.aUm("http://localhost:3000/"+p,200))
+if(p.length!==0)q.push(A.aUm("https://dev-clinic.onrender.com/"+p,200))
 if(s.a.c.x.length===0&&s.ok==null)q.push(A.rc("assets/images/profile_nopicture.png",200,r))
 p=s.ok
 if(p!=null)q.push(new A.rb(A.aV6(r,r,new A.ry(p,1)),r,200,r))
