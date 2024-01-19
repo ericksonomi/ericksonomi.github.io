@@ -27805,13 +27805,13 @@ break
 case B.ah4:p="doctor/"+a
 o=new A.aRj()
 break
-case B.agP:p="appointments/"+a
+case B.agP:p="ap/"+a
 o=new A.aRn()
 break
 case B.ahm:p="not/"+a
 o=new A.aRo()
 break
-case B.agY:p="cards/"+a
+case B.agY:p="cds/"+a
 o=new A.aRp()
 break
 case B.ahG:p="sub/"+a
@@ -27823,10 +27823,10 @@ break
 case B.ahy:p="only/"+a
 o=new A.aRs()
 break
-case B.agW:p="conference/"+a
+case B.agW:p="conf/"+a
 o=new A.aRt()
 break
-case B.ahu:p="question/"+a
+case B.ahu:p="que/"+a
 o=new A.aRu()
 break
 case B.ahJ:p="only/"+a
@@ -27835,7 +27835,7 @@ break
 case B.aha:p="fm/"+a
 o=new A.aRl()
 break
-case B.ahs:p="permissions/"+a
+case B.ahs:p="perms/"+a
 o=new A.aRm()
 break
 default:p=null
