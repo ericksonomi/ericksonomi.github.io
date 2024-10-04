@@ -1,21 +1,452 @@
-<!DOCTYPE html>
-<html>
+<html lang=en>
+
 <head>
-  <base href="/">
+    <meta charset=utf-8>
+    <title>Total Secret Academy</title>
+    <link rel=stylesheet href=https://use.fontawesome.com/releases/v5.15.4/css/all.css>
+    <link href=https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css rel=stylesheet>
+    <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css>
+    <link href=lib/animate/animate.min.css rel=stylesheet>
+    <link href=lib/owlcarousel/assets/owl.carousel.min.css rel=stylesheet>
+    <link href=css/bootstrap.min.css rel=stylesheet>
+    <link href=css/style.css rel=stylesheet>
+    <style>
+        .chat-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+            background-image: url('img/la.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: #d0af50;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, .2);
+            position: relative;
+            overflow: hidden
+        }
 
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="project.">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="iuscare_web">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
-  <link rel="icon" type="image/png" href="favicon.png"/>
+        .chat-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .4);
+            z-index: 1
+        }
 
-  <title>IUSCARE</title>
-  <link rel="manifest" href="manifest.json">
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 700;
+            z-index: 2;
+            position: relative;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, .5)
+        }
+
+        .whatsapp-button {
+            text-decoration: none;
+            color: #fff;
+            background: linear-gradient(45deg, #25d366, #128c7e);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            transition: all .4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #c39d55;
+            z-index: 2;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, .3)
+        }
+
+        .whatsapp-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background-color: rgba(255, 255, 255, .2);
+            border-radius: 50%;
+            transition: all .7s ease;
+            transform: translate(-50%, -50%) scale(0);
+            z-index: 1
+        }
+
+        .whatsapp-button:hover::after {
+            transform: translate(-50%, -50%) scale(1)
+        }
+
+        .whatsapp-button:hover {
+            background: linear-gradient(45deg, #128c7e, #25d366);
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, .4)
+        }
+    </style>
 </head>
+
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+    <div id=spinner
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style=width:3rem;height:3rem role=status><span
+                class=sr-only>Loading...</span></div>
+    </div>
+    <div class="container-fluid sticky-top px-0">
+        <div class="position-absolute bg-dark" style=left:0;top:0;width:100%;height:100%></div>
+        <div class="container px-0">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-white py-3 px-4"><a href=index.html
+                    class="navbar-brand p-0"><img src=img/logo.jpg alt="" srcset=""></a><button class=navbar-toggler
+                    type=button data-bs-toggle=collapse data-bs-target=#navbarCollapse><span
+                        class="fa fa-bars"></span></button>
+                <div class="collapse navbar-collapse" id=navbarCollapse>
+                    <div class="navbar-nav ms-auto py-0"><a href=index.html class="nav-item nav-link active">Home</a><a
+                            href=service.html class="nav-item nav-link">Store</a><a href=contact.html
+                            class="nav-item nav-link">Contact</a></div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="modal fade" id=searchModal tabindex=-1 aria-labelledby=exampleModalLabel aria-hidden=true>
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content rounded-0">
+                <div class=modal-header>
+                    <h4 class="modal-title mb-0" id=exampleModalLabel>Search by keyword</h4><button type=button
+                        class=btn-close data-bs-dismiss=modal aria-label=Close></button>
+                </div>
+                <div class="modal-body d-flex align-items-center">
+                    <div class="input-group w-75 mx-auto d-flex"><input type=search class="form-control p-3"
+                            placeholder=keywords aria-describedby=search-icon-1><span id=search-icon-1
+                            class="input-group-text p-3"><i class="fa fa-search"></i></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-carousel owl-carousel">
+        <div class=header-carousel-item>
+            <div class=header-carousel-item-img-1>
+                <img src=img/carousel-2.png class="img-fluid w-100" alt=Image>
+            </div>
+            <div class=carousel-caption>
+                <div class="carousel-caption-inner text-start p-3">
+                    <h1 class="display-1 text-capitalize text-white mb-4 fadeInUp animate__animated"
+                        data-animation=fadeInUp data-delay=1.3s style=animation-delay:1.3s>The Real Art of
+                    </h1>
+                    <h1 class="display-1 text-capitalize text-white mb-4 fadeInUp animate__animated"
+                        data-animation=fadeInUp data-delay=1.3s style=animation-delay:1.3s><b>Hair Replacement</b>
+                    </h1>
+                    <a class="btn btn-outline-primary rounded-pill py-3 px-5 mb-4 me-4 fadeInUp animate__animated"
+                        data-animation=fadeInUp data-delay=1.5s style=animation-delay:1.7s
+                        href="https://docs.google.com/forms/d/e/1FAIpQLScszw9CLZc-VTSxZUrojGPpGxPGCgDCjdebDChZQOTtF_o5BA/viewform?embedded=true">
+                        About Your Hair Prosthetics Needs
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class=header-carousel-item>
+            <div class=header-carousel-item-img-2>
+                <img src=img/carousel-1.jpeg class="img-fluid w-100" alt=Image>
+            </div>
+            <div class=carousel-caption>
+                <div class="carousel-caption-inner text-start p-3">
+                    <h1 class="display-1 text-capitalize text-white mb-4 fadeInUp animate__animated"
+                        data-animation=fadeInUp data-delay=1.3s style=animation-delay:1.3s>Men's & Women
+                    </h1>
+                    <h1 class="display-1 text-capitalize text-white mb-4 fadeInUp animate__animated"
+                        data-animation=fadeInUp data-delay=1.3s style=animation-delay:1.3s><b>Hair Restoration</b>
+                    </h1>
+                    <a class="btn btn-outline-primary rounded-pill py-3 px-5 mb-4 me-4 fadeInUp animate__animated"
+                        data-animation=fadeInUp data-delay=1.5s style=animation-delay:1.7s
+                        href="https://docs.google.com/forms/d/e/1FAIpQLScszw9CLZc-VTSxZUrojGPpGxPGCgDCjdebDChZQOTtF_o5BA/viewform?embedded=true">
+                        About Your Hair Prosthetics Needs
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class=header-carousel-item>
+            <div class=header-carousel-item-vid>
+                <video src=vid/la.mp4 class="img-fluid w-100" autoplay muted loop alt=Video>
+                </video>
+                <div class=carousel-caption>
+                    <div class="carousel-caption-inner text-start p-3">
+                        <h1 class="display-1 text-capitalize text-white mb-4 fadeInUp animate__animated"
+                            data-animation=fadeInUp data-delay=1.3s style=animation-delay:1.3s>Men's & Women
+                        </h1>
+                        <h1 class="display-1 text-capitalize text-white mb-4 fadeInUp animate__animated"
+                            data-animation=fadeInUp data-delay=1.3s style=animation-delay:1.3s><b>Hair Restoration</b>
+                        </h1>
+                        <a class="btn btn-outline-primary rounded-pill py-3 px-5 mb-4 me-4 fadeInUp animate__animated"
+                            data-animation=fadeInUp data-delay=1.5s style=animation-delay:1.7s
+                            href="https://docs.google.com/forms/d/e/1FAIpQLScszw9CLZc-VTSxZUrojGPpGxPGCgDCjdebDChZQOTtF_o5BA/viewform?embedded=true">
+                            About Your Hair Prosthetics Needs
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid team pb-5">
+        <div class="container pb-5">
+            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay=0.1s style=max-width:800px>
+                <h1 class=display-4>Transform your look with personalized services at Total Secret Hair Club. Restore
+                    beauty and confidence.</h1>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay=0.1s>
+                    <div class="team-item rounded">
+                        <div class=team-img><img src=img/team-1.jpg class="img-fluid w-100 rounded-top" alt=Image>
+                            <div class=team-icon><a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3"
+                                    href=""><i class="fas fa-share-alt"></i></a>
+                                <div class=team-icon-share><a
+                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                            class="fab fa-facebook-f"></i></a><a
+                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                            class="fab fa-twitter"></i></a><a
+                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-0" href=""><i
+                                            class="fab fa-instagram"></i></a></div>
+                            </div>
+                        </div>
+                        <div class="team-content bg-dark text-center rounded-bottom p-4">
+                            <div class="team-content-inner rounded-bottom">
+                                <h4 class=text-white>Combat Hair Loss and Restore Growth</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay=0.3s>
+                    <div class="team-item rounded">
+                        <div class=team-img><img src=img/team-2.jpeg class="img-fluid w-100 rounded-top" alt=Image>
+                            <div class=team-icon><a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3"
+                                    href=""><i class="fas fa-share-alt"></i></a>
+                                <div class=team-icon-share><a
+                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                            class="fab fa-facebook-f"></i></a><a
+                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                            class="fab fa-twitter"></i></a><a
+                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-0" href=""><i
+                                            class="fab fa-instagram"></i></a></div>
+                            </div>
+                        </div>
+                        <div class="team-content bg-dark text-center rounded-bottom p-4">
+                            <div class="team-content-inner rounded-bottom">
+                                <h4 class=text-white>Add volume with the hair extesioms</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay=0.5s>
+                    <div class="team-item rounded">
+                        <div class=team-img><img src=img/team-3.png class="img-fluid w-100 rounded-top" alt=Image>
+                            <div class=team-icon><a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3"
+                                    href=""><i class="fas fa-share-alt"></i></a>
+                                <div class=team-icon-share><a
+                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                            class="fab fa-facebook-f"></i></a><a
+                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                            class="fab fa-twitter"></i></a><a
+                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-0" href=""><i
+                                            class="fab fa-instagram"></i></a></div>
+                            </div>
+                        </div>
+                        <div class="team-content bg-dark text-center rounded-bottom p-4">
+                            <div class="team-content-inner rounded-bottom">
+                                <h4 class=text-white>Pre-chemo counseling</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay=0.7s>
+                    <div class="team-item rounded">
+                        <div class=team-img><img src=img/team-4.jpg class="img-fluid w-100 rounded-top" alt=Image>
+                            <div class=team-icon><a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3"
+                                    href=""><i class="fas fa-share-alt"></i></a>
+                                <div class=team-icon-share><a
+                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                            class="fab fa-facebook-f"></i></a><a
+                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
+                                            class="fab fa-twitter"></i></a><a
+                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-0" href=""><i
+                                            class="fab fa-instagram"></i></a></div>
+                            </div>
+                        </div>
+                        <div class="team-content bg-dark text-center rounded-bottom p-4">
+                            <div class="team-content-inner rounded-bottom">
+                                <h4 class=text-white>Enhance your style with our advanced solutions for baldness</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid about bg-light py-5">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 col-xl-5 wow fadeInLeft" data-wow-delay=0.1s>
+                    <div class=about-img>
+                        <video class="img-fluid vid-about" w-100 rounded-top bg-white controls>
+                            <source src=vid/about-3.mp4 type=video/mp4>
+                        </video>
+                    </div><img src=img/about-2.png class="img-fluid w-100 img-about" alt=Image>
+                </div>
+                <div class="col-lg-6 col-xl-7 wow fadeInRight" data-wow-delay=0.3s>
+                    <h1 class="display-5 mb-4">Total Secret Hair Club: Excellence in Hair Restoration
+                    </h1>
+                    <p class="text ps-4 mb-4">Total Secret Hair Club, founded by the renowned Carla Acosta, has
+                        established itself as the world leader in customized hair prosthetics. With over 40 years of
+                        experience, our salon has transformed the lives of thousands of clients through innovative,
+                        non-surgical hair restoration solutions.</p>
+                    <h1 class="display-5 mb-4">Our Journey:</h1>
+                    <p class="text ps-4 mb-4">Since our inception, we have been at the forefront of hair restoration,
+                        combining advanced techniques and exclusive materials to deliver results that are truly
+                        transformative. The dedication and talent of Carla Acosta have been fundamental to our ongoing
+                        success and the trust placed in us by artists and celebrities..</p>
+                    <h1 class="display-5 mb-4"> Our Commitment:</h1>
+                    <p class="text ps-4 mb-4">At Total Secret Hair Club, every hair prosthetic is a custom-made
+                        masterpiece, designed to blend seamlessly with natural hair and provide a flawless appearance.
+                        We take pride in offering a unique and transformative experience with every visit.
+                        Representative image of the quality and success of our hair prosthetics.</p>
+                    <div class=row>
+                        <div class="col-lg-4 col-sm-4">
+                            <div class="bg-primary rounded p-4">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <span class="counter-value fs-1 fw-bold text-dark" data-toggle=counter-up>25</span>
+                                    <h4 class="text-dark fs-1 mb-0" style=font-weight:600;font-size:25px>k+</h4>
+                                </div>
+                                <div class="w-100 d-flex align-items-center justify-content-center">
+                                    <p class="text-white mb-0">Project Complete</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-4">
+                            <div class="bg-dark rounded p-4">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <span class="counter-value fs-1 fw-bold text-white" data-toggle=counter-up>40</span>
+                                    <h4 class="text-white fs-1 mb-0" style=font-weight:600;font-size:25px>+</h4>
+                                </div>
+                                <div class="w-100 d-flex align-items-center justify-content-center">
+                                    <p class="text-white mb-0">Years Of Experience</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-4">
+                            <div class="bg-primary rounded p-4">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <span class="counter-value fs-1 fw-bold text-dark" data-toggle=counter-up>70</span>
+                                    <h4 class="text-dark fs-1 mb-0" style=font-weight:600;font-size:25px>+</h4>
+                                </div>
+                                <div class="w-100 d-flex align-items-center justify-content-center">
+                                    <p class="text-white mb-0">Team Members</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class=chat-section>
+        <h2 class=title>Pre-chemotherapy Counseling</h2>
+        <a href=https://wa.link/qiyyzc class=whatsapp-button>Make your appointment</a>
+    </section>
+    <div class="container-fluid testimonial bg-light py-5">
+        <div class="container py-5">
+            <div class="row g-4 align-items-center">
+                <div class="col-xl-4 wow fadeInLeft" data-wow-delay=0.1s>
+                    <div class="h-100 rounded">
+                        <h1 class="display-4 mb-4">Clients are Talking</h1>
+                        <p class=mb-4>At Total Secret Hair Club, our clients discover personalized hair solutions that
+                            transform their lives. Sofia found the perfect prosthesis for her chemotherapy treatment,
+                            Ana revitalized her look with our extensions, and Carlos regained his self-esteem with our
+                            hair prosthetics. We're here to provide you with confidence and comfort.</p><a
+                            class="btn btn-primary rounded-pill text-white py-3 px-5" href=#>Read All Reviews<i
+                                class="fas fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+                <div class=col-xl-8>
+                    <div class="testimonial-carousel owl-carousel wow fadeInUp" data-wow-delay=0.1s>
+                        <div class="testimonial-item bg-white rounded p-4 wow fadeInUp" data-wow-delay=0.3s>
+                            <div class=d-flex>
+                                <div><i class="fas fa-quote-left fa-3x text-dark me-3"></i></div>
+                                <p class=mt-4>Thanks to Total Secret Hair Club, I found the perfect hair prosthesis. I
+                                    felt secure and beautiful during my chemotherapy treatment. I highly recommend their
+                                    services</p>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <div class="my-auto text-end">
+                                    <h5>Sofia Martinez</h5>
+                                    <p class=mb-0>Clients</p>
+                                </div>
+                                <div class="bg-white rounded-circle ms-3"><img src=img/testimonial-1.jpg
+                                        class="rounded-circle p-2"
+                                        style="width:80px;height:80px;border:1px solid;border-color:#aa893b" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-item bg-white rounded p-4 wow fadeInUp" data-wow-delay=0.5s>
+                            <div class=d-flex>
+                                <div><i class="fas fa-quote-left fa-3x text-dark me-3"></i></div>
+                                <p class=mt-4>The extensions and wigs from Total Secret have transformed my appearance.
+                                    Their attention to detail and support every step of the way have given me confidence
+                                    again. They are exceptional</p>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <div class="my-auto text-end">
+                                    <h5>Ana Lopez</h5>
+                                    <p class=mb-0>Clients</p>
+                                </div>
+                                <div class="bg-white rounded-circle ms-3"><img src=img/testimonial-2.jpg
+                                        class="rounded-circle p-2"
+                                        style="width:80px;height:80px;border:1px solid;border-color:#aa893b" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-item bg-white rounded p-4 wow fadeInUp" data-wow-delay=0.7s>
+                            <div class=d-flex>
+                                <div><i class="fas fa-quote-left fa-3x text-dark me-3"></i></div>
+                                <p class=mt-4>As a man with alopecia, I was always looking for a natural solution. At
+                                    Total Secret Hair Club, I found the hair prosthesis I needed to regain my
+                                    self-esteem. I am very satisfied</p>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <div class="my-auto text-end">
+                                    <h5>Carlos Fernandez</h5>
+                                    <p class=mb-0>Clients</p>
+                                </div>
+                                <div class="bg-white rounded-circle ms-3"><img src=img/testimonial-3.jpg
+                                        class="rounded-circle p-2"
+                                        style="width:80px;height:80px;border:1px solid;border-color:#aa893b" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid faq py-5">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+                <div class=pb-5>
+                    <h1 class=display-4>Frequently asked questions</h1>
+                </div><iframe src="https://www.youtube.com/embed/ZPJU4KfwH-c?autoplay=1&mute=1"
+                    title="YouTube video player" frameborder=0 style=width:100%;height:auto;aspect-ratio:16/9;border:0
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy=strict-origin-when-cross-origin allowfullscreen></iframe>
+            </div>
+        </div>
+    </div><a href=# class="btn btn-primary btn-lg-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+    <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js></script>
+    <script src=lib/wow/wow.min.js></script>
+    <script src=lib/owlcarousel/owl.carousel.min.js></script>
+    <script src=js/main.js></script>
 </body>
+
 </html>
