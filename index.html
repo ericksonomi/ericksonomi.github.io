@@ -102,11 +102,9 @@
     <div class="container-fluid sticky-top px-0">
         <div class="position-absolute bg-dark" style=left:0;top:0;width:100%;height:100%></div>
         <div class="container px-0">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-white py-3 px-4"><a href=index.html
-                    class="navbar-brand p-0"><img src=img/logo.jpg alt="" srcset=""></a><button class=navbar-toggler
-                    type=button data-bs-toggle=collapse data-bs-target=#navbarCollapse><span
-                        class="fa fa-bars"></span></button>
-                <div class="collapse navbar-collapse" id=navbarCollapse>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-white py-3 px-4"><a href="index.html"
+                    class="navbar-brand p-0"><img src="img/logo.jpg" alt="" srcset=""></a>
+                <div class="navbar-collapse" id=navbarCollapse>
                     <div class="navbar-nav ms-auto py-0"><a href=index.html class="nav-item nav-link active">Home</a><a
                             href=service.html class="nav-item nav-link">Store</a><a href=contact.html
                             class="nav-item nav-link">Contact</a></div>
@@ -192,100 +190,149 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid team pb-5">
-        <div class="container pb-5">
-            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay=0.1s style=max-width:800px>
-                <h1 class=display-4>Transform your look with personalized services at Total Secret Hair Club. Restore
-                    beauty and confidence.</h1>
-            </div>
-            <div class="row g-4 justify-content-center">
-                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay=0.1s>
-                    <div class="team-item rounded">
-                        <div class=team-img><img src=img/team-1.jpg class="img-fluid w-100 rounded-top" alt=Image>
-                            <div class=team-icon><a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3"
-                                    href=""><i class="fas fa-share-alt"></i></a>
-                                <div class=team-icon-share><a
-                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
-                                            class="fab fa-facebook-f"></i></a><a
-                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
-                                            class="fab fa-twitter"></i></a><a
-                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-0" href=""><i
-                                            class="fab fa-instagram"></i></a></div>
-                            </div>
-                        </div>
-                        <div class="team-content bg-dark text-center rounded-bottom p-4">
-                            <div class="team-content-inner rounded-bottom">
-                                <h4 class=text-white>Combat Hair Loss and Restore Growth</h4>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="infoModalLabel">Service Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay=0.3s>
-                    <div class="team-item rounded">
-                        <div class=team-img><img src=img/team-2.jpeg class="img-fluid w-100 rounded-top" alt=Image>
-                            <div class=team-icon><a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3"
-                                    href=""><i class="fas fa-share-alt"></i></a>
-                                <div class=team-icon-share><a
-                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
-                                            class="fab fa-facebook-f"></i></a><a
-                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
-                                            class="fab fa-twitter"></i></a><a
-                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-0" href=""><i
-                                            class="fab fa-instagram"></i></a></div>
-                            </div>
-                        </div>
-                        <div class="team-content bg-dark text-center rounded-bottom p-4">
-                            <div class="team-content-inner rounded-bottom">
-                                <h4 class=text-white>Add volume with the hair extesioms</h4>
-                            </div>
-                        </div>
-                    </div>
+                <div class="modal-body" id="modalContent">
+                    <!-- Aquí se cargará el contenido dinámico -->
+                    <p id="serviceDescription"></p>
+                    <p id="serviceDetails"></p>
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay=0.5s>
-                    <div class="team-item rounded">
-                        <div class=team-img><img src=img/team-3.png class="img-fluid w-100 rounded-top" alt=Image>
-                            <div class=team-icon><a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3"
-                                    href=""><i class="fas fa-share-alt"></i></a>
-                                <div class=team-icon-share><a
-                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
-                                            class="fab fa-facebook-f"></i></a><a
-                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
-                                            class="fab fa-twitter"></i></a><a
-                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-0" href=""><i
-                                            class="fab fa-instagram"></i></a></div>
-                            </div>
-                        </div>
-                        <div class="team-content bg-dark text-center rounded-bottom p-4">
-                            <div class="team-content-inner rounded-bottom">
-                                <h4 class=text-white>Pre-chemo counseling</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay=0.7s>
-                    <div class="team-item rounded">
-                        <div class=team-img><img src=img/team-4.jpg class="img-fluid w-100 rounded-top" alt=Image>
-                            <div class=team-icon><a class="btn btn-primary btn-sm-square text-white rounded-circle mb-3"
-                                    href=""><i class="fas fa-share-alt"></i></a>
-                                <div class=team-icon-share><a
-                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
-                                            class="fab fa-facebook-f"></i></a><a
-                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-3" href=""><i
-                                            class="fab fa-twitter"></i></a><a
-                                        class="btn btn-primary btn-sm-square text-white rounded-circle mb-0" href=""><i
-                                            class="fab fa-instagram"></i></a></div>
-                            </div>
-                        </div>
-                        <div class="team-content bg-dark text-center rounded-bottom p-4">
-                            <div class="team-content-inner rounded-bottom">
-                                <h4 class=text-white>Enhance your style with our advanced solutions for baldness</h4>
-                            </div>
-                        </div>
-                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+    <div class="container-fluid team pb-5">
+        <div class="container pb-5">
+            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay=0.1s style="max-width:800px">
+                <h1 class="display-4">Transform your look with personalized services at Total Secret Hair Club. Restore
+                    beauty and confidence.</h1>
+            </div>
+            <div class="row g-4 justify-content-center">
+
+                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay=0.1s>
+                    <div class="team-item rounded" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-title="Combat Hair Loss and Restore Growth"
+                        data-description="Our treatment combats hair loss and stimulates natural hair growth using the latest techniques in hair restoration. We assess your individual case to recommend the best approach."
+                        data-extra-info="This service is ideal for both men and women experiencing hair thinning or baldness. We offer a comprehensive consultation where we analyze the causes of hair loss and suggest the most effective solution. Our cutting-edge treatments include PRP (Platelet-Rich Plasma) therapy, laser hair therapy, and specialized hair regrowth products. Whether your hair loss is caused by genetics, stress, or other factors, we have the tools to help you regain your confidence and restore your hair."
+                        data-benefits="By promoting natural hair growth through advanced treatments, you can achieve thicker, fuller hair. Our personalized plans ensure that we address your unique needs and concerns. We use the latest technology, which has been proven effective in stimulating hair follicles and improving hair density over time. Regular follow-up sessions will help track your progress and optimize results.">
+                        <div class="team-img">
+                            <img src="img/team-1.jpg" class="img-fluid w-100 rounded-top" alt="Image">
+                        </div>
+                        <div class="team-content bg-dark text-center rounded-bottom p-4">
+                            <h4 class="text-white">Combat Hair Loss and Restore Growth</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay=0.3s>
+                    <div class="team-item rounded" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-title="Add Volume with Hair Extensions"
+                        data-description="Our premium hair extensions are designed to add volume and length, providing you with a more luscious and fuller look."
+                        data-extra-info="Whether you're looking to enhance your existing hair or completely transform your look, we offer a wide selection of premium hair extensions. Our extensions come in various textures, lengths, and colors, ensuring that you get the most natural, seamless results. Our team of professionals is trained to apply extensions with precision, ensuring comfort and durability. We offer both temporary and permanent solutions, depending on your preference. During the consultation, we’ll assess your hair type and suggest the most suitable option for you."
+                        data-benefits="Our high-quality extensions not only enhance volume and length but also help protect your natural hair from damage. The application process is gentle and safe, with no risk of damage to your scalp or hair follicles. The extensions are made from 100% natural hair, so they blend seamlessly with your own hair, giving you a fuller and more voluminous look. Additionally, you’ll receive tips on how to care for your extensions to ensure they stay beautiful for longer.">
+                        <div class="team-img">
+                            <img src="img/team-2.jpeg" class="img-fluid w-100 rounded-top" alt="Image">
+                        </div>
+                        <div class="team-content bg-dark text-center rounded-bottom p-4">
+                            <h4 class="text-white">Add Volume with Hair Extensions</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay=0.5s>
+                    <div class="team-item rounded" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-title="Pre-Chemo Counseling"
+                        data-description="Our pre-chemo counseling provides emotional support and strategies to prepare for hair loss due to chemotherapy."
+                        data-extra-info="Going through chemotherapy can be a stressful experience, especially when it comes to the possibility of hair loss. Our pre-chemo counseling offers a comprehensive approach to help you prepare emotionally and mentally. We guide you through hair preservation techniques such as scalp cooling, provide options for wigs or head coverings, and offer emotional support to help you manage any anxiety you might feel. Our goal is to ensure that you feel confident and in control during this difficult time."
+                        data-benefits="Our counseling sessions provide the necessary emotional support and guidance to help you navigate hair loss. We offer solutions that go beyond just hair replacement, addressing the emotional impact of losing your hair. By exploring options like cooling caps to preserve your natural hair, we aim to reduce the psychological burden of hair loss and provide you with a sense of normalcy. With the right approach, you can embrace the change with confidence and strength.">
+                        <div class="team-img">
+                            <img src="img/team-3.png" class="img-fluid w-100 rounded-top" alt="Image">
+                        </div>
+                        <div class="team-content bg-dark text-center rounded-bottom p-4">
+                            <h4 class="text-white">Pre-Chemo Counseling</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay=0.7s>
+                    <div class="team-item rounded" data-bs-toggle="modal" data-bs-target="#infoModal"
+                        data-title="Enhance Your Style with Advanced Solutions for Baldness"
+                        data-description="Our advanced solutions for baldness restore your confidence by offering personalized treatment plans to regrow your hair."
+                        data-extra-info="We specialize in advanced, non-invasive solutions for baldness. Our treatments include scalp micropigmentation, Platelet-Rich Plasma (PRP) therapy, and hair transplants, all designed to address your unique needs. Whether you’re in the early stages of hair loss or dealing with more advanced baldness, we offer a treatment plan tailored to your specific condition. Our specialists will work with you to determine the best course of action, ensuring you achieve the most natural results possible."
+                        data-benefits="Our solutions are designed to restore your hair and confidence. Scalp micropigmentation provides a realistic, fuller appearance, while PRP therapy uses your own blood to stimulate hair regrowth. Hair transplants offer a permanent solution for baldness. All treatments are minimally invasive with little to no downtime, and we offer continuous support to monitor your progress. The result is a more youthful, natural look that will enhance your overall style.">
+                        <div class="team-img">
+                            <img src="img/team-4.jpg" class="img-fluid w-100 rounded-top" alt="Image">
+                        </div>
+                        <div class="team-content bg-dark text-center rounded-bottom p-4">
+                            <h4 class="text-white">Enhance Your Style with Advanced Solutions for Baldness</h4>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>// Event listener para los cards
+        let modalContentMore = false;
+        document.addEventListener("DOMContentLoaded", function () {
+            // Escuchar los eventos de clic en los cards
+            document.querySelectorAll('.team-item').forEach(item => {
+                item.addEventListener('click', function () {
+                    // Obtener título, descripción y cualquier otro dato desde los atributos data-*
+                    var title = this.getAttribute('data-title');
+                    var description = this.getAttribute('data-description');
+                    var extraInfo = this.getAttribute('data-extra-info'); // Si tienes más detalles
+
+                    // Asegurarse de que los atributos están siendo leídos
+                    // console.log("Título:", title);
+                    // console.log("Descripción:", description);
+                    // console.log("Información extra:", extraInfo);
+
+                    // Actualizar el contenido del modal
+                    const modalLabel = document.getElementById('infoModalLabel');
+                    const modalContent = document.getElementById('modalContent');
+                    const serviceDescription = document.getElementById('serviceDescription');
+                    const serviceDetails = document.getElementById('serviceDetails');
+
+                    // Asegúrate de que el contenido del modal se actualiza correctamente
+                    if (modalLabel && modalContent) {
+                        modalLabel.textContent = title;
+                        serviceDescription.innerHTML = description; 
+                        serviceDetails.innerHTML = extraInfo; 
+
+                        // Si tienes más detalles, puedes agregarlos aquí
+                        if (extraInfo && !modalContentMore) {
+                            // modalContent.innerHTML += `<p><strong>More Info:</strong> ${extraInfo}</p>`;
+                            modalContentMore = true;
+                        }
+                    }
+                });
+            });
+        });
+
+
+
+    </script>
+
+    <!-- Bootstrap JS (y Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
     <div class="container-fluid about bg-light py-5">
         <div class="container py-5">
             <div class="row g-5 align-items-center">
@@ -317,8 +364,8 @@
                         <div class="col-lg-4 col-sm-4">
                             <div class="bg-primary rounded p-4">
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <span class="counter-value fs-1 fw-bold text-dark" data-toggle=counter-up>25</span>
-                                    <h4 class="text-dark fs-1 mb-0" style=font-weight:600;font-size:25px>k+</h4>
+                                    <span class="counter-value fs-1 fw-bold text-white" data-toggle=counter-up>25</span>
+                                    <h4 class="text-white fs-1 mb-0" style=font-weight:600;font-size:25px>k+</h4>
                                 </div>
                                 <div class="w-100 d-flex align-items-center justify-content-center">
                                     <p class="text-white mb-0">Project Complete</p>
@@ -339,8 +386,8 @@
                         <div class="col-lg-4 col-sm-4">
                             <div class="bg-primary rounded p-4">
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <span class="counter-value fs-1 fw-bold text-dark" data-toggle=counter-up>70</span>
-                                    <h4 class="text-dark fs-1 mb-0" style=font-weight:600;font-size:25px>+</h4>
+                                    <span class="counter-value fs-1 fw-bold text-white" data-toggle=counter-up>70</span>
+                                    <h4 class="text-white fs-1 mb-0" style=font-weight:600;font-size:25px>+</h4>
                                 </div>
                                 <div class="w-100 d-flex align-items-center justify-content-center">
                                     <p class="text-white mb-0">Team Members</p>
@@ -442,11 +489,34 @@
                     referrerpolicy=strict-origin-when-cross-origin allowfullscreen></iframe>
             </div>
         </div>
-    </div><a href=# class="btn btn-primary btn-lg-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="teamModal" tabindex="-1" aria-labelledby="teamModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="teamModalLabel">Detalles del tratamiento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="modal-image" src="" alt="" class="img-fluid mb-3" />
+                    <h4 id="modal-title" class="text-center"></h4>
+                    <p id="modal-description" class="text-center"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href=# class="btn btn-primary btn-lg-square back-to-top"><i class="fa fa-arrow-up"></i></a>
     <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js></script>
     <script src=lib/wow/wow.min.js></script>
     <script src=lib/owlcarousel/owl.carousel.min.js></script>
     <script src=js/main.js></script>
+
 </body>
 
 </html>
