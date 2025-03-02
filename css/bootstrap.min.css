@@ -813,7 +813,7 @@
 }
 
 .team .team-item .team-content {
-    position: relative
+    position: relative;
 }
 
 .team .team-item .team-content::after {
@@ -1084,14 +1084,15 @@ h3,
 
 h4,
 .h4 {
-    font-size: calc(1.275rem + 0.3vw)
+    /* font-size: calc(1.275rem + 0.3vw); */
+    font-size: 2.5rem;
 }
 
 @media(min-width:1200px) {
 
     h4,
     .h4 {
-        font-size: 1.5rem
+        font-size: 1.5rem;
     }
 }
 
@@ -9362,7 +9363,7 @@ fieldset:disabled .btn {
 
 .rounded-bottom {
     border-bottom-right-radius: 10px !important;
-    border-bottom-left-radius: 10px !important
+    border-bottom-left-radius: 10px !important;
 }
 
 .rounded-start {

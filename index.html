@@ -105,9 +105,12 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-white py-3 px-4"><a href="index.html"
                     class="navbar-brand p-0"><img src="img/logo.jpg" alt="" srcset=""></a>
                 <div class="navbar-collapse" id=navbarCollapse>
-                    <div class="navbar-nav ms-auto py-0"><a href=index.html class="nav-item nav-link active">Home</a><a
-                            href=service.html class="nav-item nav-link">Store</a><a href=contact.html
-                            class="nav-item nav-link">Contact</a></div>
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="service.html?galley=1" class="nav-item nav-link">Gallery</a>
+                        <a href="service.html?galley=0" class="nav-item nav-link">Store</a>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -220,7 +223,7 @@
             </div>
             <div class="row g-4 justify-content-center">
 
-                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay=0.1s>
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay=0.1s>
                     <div class="team-item rounded" data-bs-toggle="modal" data-bs-target="#infoModal"
                         data-title="Combat Hair Loss and Restore Growth"
                         data-description="Our treatment combats hair loss and stimulates natural hair growth using the latest techniques in hair restoration. We assess your individual case to recommend the best approach."
@@ -235,7 +238,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay=0.3s>
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay=0.3s>
                     <div class="team-item rounded" data-bs-toggle="modal" data-bs-target="#infoModal"
                         data-title="Add Volume with Hair Extensions"
                         data-description="Our premium hair extensions are designed to add volume and length, providing you with a more luscious and fuller look."
@@ -250,7 +253,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay=0.5s>
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay=0.5s>
                     <div class="team-item rounded" data-bs-toggle="modal" data-bs-target="#infoModal"
                         data-title="Pre-Chemo Counseling"
                         data-description="Our pre-chemo counseling provides emotional support and strategies to prepare for hair loss due to chemotherapy."
@@ -265,7 +268,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay=0.7s>
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay=0.7s>
                     <div class="team-item rounded" data-bs-toggle="modal" data-bs-target="#infoModal"
                         data-title="Enhance Your Style with Advanced Solutions for Baldness"
                         data-description="Our advanced solutions for baldness restore your confidence by offering personalized treatment plans to regrow your hair."
@@ -312,8 +315,8 @@
                     // Asegúrate de que el contenido del modal se actualiza correctamente
                     if (modalLabel && modalContent) {
                         modalLabel.textContent = title;
-                        serviceDescription.innerHTML = description; 
-                        serviceDetails.innerHTML = extraInfo; 
+                        serviceDescription.innerHTML = description;
+                        serviceDetails.innerHTML = extraInfo;
 
                         // Si tienes más detalles, puedes agregarlos aquí
                         if (extraInfo && !modalContentMore) {
@@ -338,9 +341,9 @@
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 col-xl-5 wow fadeInLeft" data-wow-delay=0.1s>
                     <div class=about-img>
-                        <video class="img-fluid vid-about" w-100 rounded-top bg-white controls>
+                        <!-- <video class="img-fluid vid-about" w-100 rounded-top bg-white controls>
                             <source src=vid/about-3.mp4 type=video/mp4>
-                        </video>
+                        </video> -->
                     </div><img src=img/about-2.png class="img-fluid w-100 img-about" alt=Image>
                 </div>
                 <div class="col-lg-6 col-xl-7 wow fadeInRight" data-wow-delay=0.3s>
