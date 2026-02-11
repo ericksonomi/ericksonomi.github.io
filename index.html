@@ -1,45 +1,1037 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Man Who Survived Himself | Nelson Valdez</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
+    <style>
+        /* --- VARIABLES & SETUP --- */
+        :root {
+            --bg-dark: #050505;
+            --bg-glass: rgba(20, 20, 20, 0.6);
+            --gold: #D4AF37;
+            --gold-light: #F3E5AB;
+            --gold-gradient: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            --neon-gold: 0 0 20px rgba(212, 175, 55, 0.7);
+            --text-main: #ffffff;
+            --text-muted: #a3a3a3;
+            --font-head: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
 
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+        html {
+            scroll-behavior: smooth;
+        }
 
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="/">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            position: relative;
+        }
 
-  <!-- iOS meta tags & icons -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="yspos">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+        /* --- MODERN ANIMATIONS CSS --- */
+        @keyframes float3D {
+            0%, 100% { 
+                transform: translateY(0px) translateX(0px) rotate(0deg); 
+                filter: drop-shadow(0 5px 15px rgba(212, 175, 55, 0.2));
+            }
+            25% { 
+                transform: translateY(-10px) translateX(-5px) rotate(-1deg); 
+                filter: drop-shadow(0 15px 25px rgba(212, 175, 55, 0.4));
+            }
+            50% { 
+                transform: translateY(-20px) translateX(5px) rotate(1deg); 
+                filter: drop-shadow(0 10px 20px rgba(212, 175, 55, 0.6));
+            }
+            75% { 
+                transform: translateY(-10px) translateX(-5px) rotate(-0.5deg); 
+                filter: drop-shadow(0 15px 25px rgba(212, 175, 55, 0.4));
+            }
+        }
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png" />
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
 
-  <title>Punto de venta</title>
-  <link rel="manifest" href="manifest.json">
+        @keyframes bgPulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.05); }
+        }
+
+        @keyframes neonPulse {
+            0%, 100% { 
+                box-shadow: 0 0 10px rgba(212, 175, 55, 0.3),
+                            0 0 20px rgba(212, 175, 55, 0.2),
+                            inset 0 0 10px rgba(212, 175, 55, 0.1);
+            }
+            50% { 
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.6),
+                            0 0 40px rgba(212, 175, 55, 0.4),
+                            0 0 60px rgba(212, 175, 55, 0.2),
+                            inset 0 0 20px rgba(212, 175, 55, 0.2);
+            }
+        }
+
+        @keyframes borderFlow {
+            0% { 
+                background-position: 0% 0%, 100% 100%; 
+                opacity: 0.8;
+            }
+            100% { 
+                background-position: 100% 0%, 0% 100%; 
+                opacity: 1;
+            }
+        }
+
+        @keyframes textGlow {
+            0%, 100% { 
+                text-shadow: 0 0 10px rgba(212, 175, 55, 0.3),
+                             0 0 20px rgba(212, 175, 55, 0.1);
+            }
+            50% { 
+                text-shadow: 0 0 20px rgba(212, 175, 55, 0.6),
+                             0 0 30px rgba(212, 175, 55, 0.3),
+                             0 0 40px rgba(212, 175, 55, 0.1);
+            }
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        /* --- BACKGROUND FX --- */
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .glow-sphere {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: bgPulse 8s ease-in-out infinite alternate;
+        }
+
+        /* --- NAVIGATION --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(5, 5, 5, 0.7);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .nav-logo {
+            font-family: var(--font-head);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 1px;
+            animation: textGlow 3s ease-in-out infinite;
+        }
+
+        .nav-logo span { 
+            color: var(--gold);
+            animation: textGlow 2s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold-gradient);
+            background-size: 200% 100%;
+            transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { 
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .nav-cta {
+            position: relative;
+            background: var(--gold-gradient);
+            background-size: 200% 200%;
+            animation: shimmer 3s infinite linear;
+            color: #000;
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            overflow: hidden;
+            transition: var(--transition);
+            border: none;
+            z-index: 1;
+        }
+
+        .nav-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+
+        .nav-cta:hover::before {
+            left: 100%;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5),
+                        0 0 30px rgba(212, 175, 55, 0.3);
+            animation: shimmer 1.5s infinite linear;
+        }
+
+        .menu-toggle { 
+            display: none; 
+            color: white; 
+            font-size: 1.5rem; 
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .menu-toggle:hover {
+            color: var(--gold);
+            transform: rotate(90deg);
+        }
+
+        /* --- TYPOGRAPHY & TEXT FX --- */
+        h1, h2, h3 { 
+            font-family: var(--font-head); 
+            line-height: 1.1;
+        }
+        
+        .text-gradient {
+            background: var(--gold-gradient);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            animation: shimmer 4s infinite linear;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 20px 80px;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            background: 
+                linear-gradient(to bottom, #050505 0%, rgba(10,10,10,0.8) 100%), 
+                url('https://images.unsplash.com/photo-1497290756760-23ac55edf36f?q=80&w=1974&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4;
+            z-index: -2;
+            animation: bgPulse 20s infinite alternate;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+            animation: textGlow 4s ease-in-out infinite;
+        }
+
+        .hero p.subhead {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: #e0e0e0;
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        /* --- MODERN BUTTON STYLES --- */
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: transparent;
+            color: var(--gold);
+            padding: 20px 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 50px;
+            letter-spacing: 2px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border: 2px solid transparent;
+            margin: 20px 0;
+            animation: neonPulse 2s infinite alternate;
+        }
+
+        .hero-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gold-gradient);
+            background-size: 200% 200%;
+            z-index: -1;
+            border-radius: 50px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .hero-btn::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                #bf953f 0%, 
+                #fcf6ba 25%, 
+                #b38728 50%, 
+                #fbf5b7 75%, 
+                #aa771c 100%);
+            background-size: 400% 400%;
+            z-index: -2;
+            border-radius: 50px;
+            animation: borderFlow 3s linear infinite;
+        }
+
+        .hero-btn:hover::before {
+            opacity: 1;
+            animation: shimmer 2s infinite linear;
+        }
+
+        .hero-btn:hover {
+            color: #000;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.4),
+                        0 0 60px rgba(212, 175, 55, 0.2);
+            letter-spacing: 3px;
+        }
+
+        .hero-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .hero-btn:hover i {
+            transform: translateX(5px) rotate(360deg);
+        }
+
+        .btn-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            z-index: -1;
+        }
+
+        /* --- ANIMATIONS (SCROLL REVEAL) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px) rotateX(10deg);
+            transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        .reveal.active { 
+            opacity: 1; 
+            transform: translateY(0) rotateX(0);
+        }
+        
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-300 { transition-delay: 0.3s; }
+        .delay-400 { transition-delay: 0.4s; }
+
+        /* --- PROBLEM SECTION --- */
+        .section-padding { 
+            padding: 100px 20px; 
+            max-width: 1200px; 
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .problem-quote {
+            border-left: 4px solid var(--gold);
+            padding-left: 30px;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-family: var(--font-head);
+            font-style: italic;
+            color: #ccc;
+            margin: 0 auto 80px;
+            max-width: 900px;
+            position: relative;
+            animation: textGlow 3s ease-in-out infinite;
+        }
+
+        .pain-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pain-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 12px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pain-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .pain-card i { 
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
+        }
+
+        .pain-card:hover::before {
+            left: 100%;
+        }
+
+        .pain-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: var(--gold);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .pain-card:hover i { 
+            transform: scale(1.3) rotate(15deg); 
+            color: var(--gold) !important;
+            animation: textGlow 1.5s ease-in-out infinite;
+        }
+
+        /* --- SOLUTION / BOOK --- */
+        .solution-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .book-container {
+            position: relative;
+            perspective: 1000px;
+            text-align: center;
+        }
+
+        .book-mockup {
+            width: 350px;
+            height: 520px;
+            background: linear-gradient(145deg, #1a1a1a, #111);
+            border: none;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+            font-family: var(--font-head);
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            animation: float3D 6s ease-in-out infinite;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8),
+                        inset 0 0 30px rgba(212, 175, 55, 0.1);
+        }
+
+        .book-mockup::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                transparent 30%, 
+                rgba(212, 175, 55, 0.1) 50%, 
+                transparent 70%);
+            animation: shimmer 4s infinite linear;
+            z-index: 1;
+        }
+
+        .book-mockup::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 6px;
+            pointer-events: none;
+        }
+
+        /* --- BENEFITS GRID --- */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 60px;
+        }
+
+        .benefit-item {
+            background: linear-gradient(145deg, rgba(30,30,30,0.5), rgba(10,10,10,0.5));
+            backdrop-filter: blur(10px);
+            padding: 35px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-item::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                rgba(212, 175, 55, 0) 0%, 
+                rgba(212, 175, 55, 0.3) 50%, 
+                rgba(212, 175, 55, 0) 100%);
+            z-index: -1;
+            border-radius: 18px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .benefit-item:hover::before {
+            opacity: 1;
+            animation: borderFlow 2s linear infinite;
+        }
+
+        .benefit-item:hover {
+            border-color: var(--gold);
+            transform: translateY(-8px) scale(1.03);
+            background: linear-gradient(145deg, rgba(40,40,40,0.6), rgba(15,15,15,0.6));
+        }
+
+        .icon-box {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .benefit-item:hover .icon-box {
+            transform: scale(1.2) rotate(10deg);
+            animation: textGlow 2s ease-in-out infinite;
+        }
+
+        /* --- PRICING --- */
+        .price-card {
+            background: radial-gradient(circle at top, rgba(50,50,50,0.3), rgba(10,10,10,0.8));
+            border: 1px solid var(--gold);
+            padding: 60px 40px;
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            animation: neonPulse 3s infinite alternate;
+        }
+
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold-gradient);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite linear;
+        }
+
+        .price-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(212, 175, 55, 0.3),
+                        0 0 80px rgba(212, 175, 55, 0.2);
+        }
+
+        .big-price {
+            font-size: 5rem;
+            font-family: var(--font-head);
+            font-weight: 700;
+            color: white;
+            margin: 20px 0;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            animation: textGlow 2s ease-in-out infinite;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid #222;
+            padding: 50px 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.85rem;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--gold) 50%, 
+                transparent 100%);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .navbar { 
+                padding: 15px 20px; 
+            }
+            .nav-links { 
+                display: none; 
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(5,5,5,0.95);
+                padding: 20px;
+                border-bottom: 1px solid #333;
+                backdrop-filter: blur(10px);
+            }
+            .menu-toggle { 
+                display: block; 
+            }
+            .hero h1 { 
+                font-size: 2.5rem; 
+            }
+            .solution-layout { 
+                grid-template-columns: 1fr; 
+                text-align: center; 
+            }
+            .book-mockup { 
+                width: 280px; 
+                height: 400px; 
+                margin-bottom: 40px; 
+            }
+            .problem-quote { 
+                font-size: 1.3rem; 
+                border-left: 2px solid var(--gold); 
+                padding-left: 20px;
+            }
+            .hero-btn {
+                padding: 18px 30px;
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <script src="flutter_bootstrap.js" async></script>
-</body>
-<script>document.addEventListener("contextmenu", function (event) {
-    event.preventDefault();
-  });
-  </script>
 
+    <div class="noise-overlay"></div>
+
+    <nav class="navbar">
+        <a href="#" class="nav-logo">Nelson<span>Valdez</span></a>
+        
+        <div class="nav-links">
+            <a href="#problem">The Problem</a>
+            <a href="#solution">The Book</a>
+            <a href="#benefits">What You'll Learn</a>
+            <a href="#author">Author</a>
+        </div>
+
+        <div style="display: flex; gap: 15px; align-items: center;">
+            <a href="#buy" class="nav-cta">Buy $9.99</a>
+            <i class="ph ph-list menu-toggle"></i>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="glow-sphere" style="top: -100px; left: 20%;"></div>
+        
+        <div class="hero-content">
+            <h1 class="reveal">"They didn't die from a bullet, but from an <span class="text-gradient">Emotional Autopsy</span>."</h1>
+            <p class="subhead reveal delay-100">Discover the book that is igniting the dignity of thousands who loved, fell, and rose again.</p>
+            <p class="reveal delay-200" style="color: var(--gold); font-family: var(--font-head); font-style: italic; margin-bottom: 40px;">— By Nelson Valdez</p>
+            
+            <a href="#buy" class="hero-btn reveal delay-300" id="heroButton">
+                Get Instant Access <i class="ph-bold ph-arrow-right"></i>
+            </a>
+            <div class="reveal delay-400" style="margin-top: 20px; font-size: 0.8rem; color: #888; display: flex; justify-content: center; gap: 10px; align-items: center;">
+                <i class="ph-fill ph-lock-key"></i> Secure Checkout via JVZoo
+            </div>
+        </div>
+    </header>
+
+    <section id="problem" class="section-padding">
+        <div class="problem-quote reveal">
+            "There are moments in life that make no noise. <br>
+            They don't explode. They don't bleed outwardly. <br>
+            They simply <strong class="text-gradient">break inside</strong>…"
+        </div>
+
+        <div class="pain-cards">
+            <div class="pain-card reveal delay-100">
+                <i class="ph ph-heart-break" style="font-size: 2rem; color: #888; margin-bottom: 15px;"></i>
+                <h3>Did you endure too much?</h3>
+                <p style="color: #aaa; margin-top: 10px;">Are you the man — or woman — who endured until you lost yourself?</p>
+            </div>
+            <div class="pain-card reveal delay-200">
+                <i class="ph ph-person-simple-walk" style="font-size: 2rem; color: #888; margin-bottom: 15px;"></i>
+                <h3>Do you love from a distance?</h3>
+                <p style="color: #aaa; margin-top: 10px;">Are you loving from a distance that pierces your chest every morning?</p>
+            </div>
+            <div class="pain-card reveal delay-300">
+                <i class="ph ph-mirror" style="font-size: 2rem; color: #888; margin-bottom: 15px;"></i>
+                <h3>Don't you recognize yourself?</h3>
+                <p style="color: #aaa; margin-top: 10px;">Do you look in the mirror and see a reflection you no longer know?</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="solution" class="section-padding" style="background: linear-gradient(to bottom, #050505, #0a0a0a);">
+        <div class="glow-sphere" style="right: -200px; bottom: 0; width: 400px; height: 400px; opacity: 0.3;"></div>
+        
+        <div class="solution-layout">
+            <div class="book-container reveal">
+                <div class="book-mockup">
+                    <div>
+                        [BOOK COVER]<br>
+                        <span style="font-size: 0.8rem; color: #666;">(Replace image)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-content reveal delay-100">
+                <h5 style="color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; animation: textGlow 2s infinite;">The Architecture of the Soul</h5>
+                <h2 style="font-size: 2.5rem; margin-bottom: 25px;">This is not a Victim's book. <br>It is a <span class="text-gradient">Survivor's</span> book.</h2>
+                <p style="color: #ccc; margin-bottom: 20px; line-height: 1.8;">
+                    Written by <strong>Nelson Valdez</strong>, a recognized TV figure, this book is not just a story; it is a direct arrow to consciousness, dignity, and emotional reconstruction.
+                </p>
+                <p style="color: #ccc; margin-bottom: 30px; line-height: 1.8;">
+                    It is for those who are ready to stop bleeding from wounds no one else can see. It is the map back to yourself.
+                </p>
+                
+                <ul style="list-style: none; color: #ddd;">
+                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                        <i class="ph-fill ph-check-circle" style="color: var(--gold); animation: textGlow 2s infinite;"></i> 
+                        <span>Step-by-step guide to forgive yourself.</span>
+                    </li>
+                    <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                        <i class="ph-fill ph-check-circle" style="color: var(--gold); animation: textGlow 2s infinite;"></i> 
+                        <span>Strategies to shield your self-esteem.</span>
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 10px;">
+                        <i class="ph-fill ph-check-circle" style="color: var(--gold); animation: textGlow 2s infinite;"></i> 
+                        <span>Understanding "love that doesn't hurt".</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="section-padding">
+        <h2 class="reveal" style="text-align: center; margin-bottom: 50px; animation: textGlow 3s infinite;">What You'll Discover Inside</h2>
+        <div class="benefits-grid">
+            <div class="benefit-item reveal delay-100">
+                <div class="icon-box"><i class="ph ph-mask-sad"></i></div>
+                <h3>The Silent Fall</h3>
+                <p style="color: #999; font-size: 0.9rem;">Understand the invisible blows that fracture a life and how to identify them.</p>
+            </div>
+            <div class="benefit-item reveal delay-200">
+                <div class="icon-box"><i class="ph ph-lock-key-open"></i></div>
+                <h3>Silence is a Prison</h3>
+                <p style="color: #999; font-size: 0.9rem;">How silencing pain becomes the greatest betrayal of oneself.</p>
+            </div>
+            <div class="benefit-item reveal delay-300">
+                <div class="icon-box"><i class="ph ph-crown"></i></div>
+                <h3>The Hero is You</h3>
+                <p style="color: #999; font-size: 0.9rem;">The exact moment when rescue ceases to be external. No one will come, except you.</p>
+            </div>
+            <div class="benefit-item reveal delay-100">
+                <div class="icon-box"><i class="ph ph-key"></i></div>
+                <h3>12 Keys to Reconstruction</h3>
+                <p style="color: #999; font-size: 0.9rem;">A practical guide to emotional freedom and self-forgiveness.</p>
+            </div>
+            <div class="benefit-item reveal delay-200">
+                <div class="icon-box"><i class="ph ph-heart"></i></div>
+                <h3>Love with Dignity</h3>
+                <p style="color: #999; font-size: 0.9rem;">Learn to love from calmness, moving away from chaotic attachments.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="text-align: center;">
+        <h3 class="reveal" style="margin-bottom: 30px; animation: textGlow 3s infinite;">A Message from Nelson</h3>
+        <div class="reveal" style="max-width: 800px; margin: 0 auto; border: 1px solid #333; aspect-ratio: 16/9; background: linear-gradient(145deg, #000, #111); display: flex; align-items: center; justify-content: center; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); animation: neonPulse 4s infinite alternate;">
+            <p style="color: #555; font-size: 1.2rem;">[Insert Video Here]</p>
+        </div>
+    </section>
+
+    <section id="buy" class="section-padding" style="margin-bottom: 50px;">
+        <div class="price-card reveal">
+            <h3 style="color: #ccc; font-weight: 300; margin-bottom: 20px;">Begin Your Reconstruction Today</h3>
+            <div class="big-price">$9.99</div>
+            <p style="color: #888; margin-bottom: 30px; font-size: 1.1rem;">One-time Payment • Immediate Digital Access</p>
+            
+            <a href="#" class="hero-btn" style="width: 100%; justify-content: center; max-width: 400px; margin: 0 auto;">
+                Buy Now <i class="ph-bold ph-shopping-cart"></i>
+            </a>
+
+            <div style="margin-top: 30px; border-top: 1px solid #333; padding-top: 20px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                    <i class="ph ph-shield-check" style="color: var(--gold); font-size: 2rem; animation: textGlow 2s infinite;"></i>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 5px;">30 Day Guarantee</p>
+                </div>
+                <div style="text-align: center;">
+                    <i class="ph ph-lock" style="color: var(--gold); font-size: 2rem; animation: textGlow 2s infinite;"></i>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 5px;">Secure Payment</p>
+                </div>
+                <div style="text-align: center;">
+                    <i class="ph ph-download-simple" style="color: var(--gold); font-size: 2rem; animation: textGlow 2s infinite;"></i>
+                    <p style="font-size: 0.8rem; color: #888; margin-top: 5px;">Instant Download</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Copyright © 2025 Nelson Valdez. All rights reserved.</p>
+        <p style="margin-top: 10px; color: #444; font-size: 0.75rem;">
+            Disclaimer: This book is for educational and personal development purposes. <br>
+            It does not replace professional medical or therapeutic advice.
+        </p>
+    </footer>
+
+    <script>
+        // Scroll Animation
+        const observerOptions = { threshold: 0.15 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Enhanced Mobile Menu
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        let menuOpen = false;
+        
+        menuToggle.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            if (menuOpen) {
+                navLinks.style.display = 'flex';
+                navLinks.style.animation = 'fadeIn 0.3s ease forwards';
+            } else {
+                navLinks.style.animation = 'fadeOut 0.3s ease forwards';
+                setTimeout(() => {
+                    navLinks.style.display = 'none';
+                }, 300);
+            }
+        });
+
+        // Button particle effect
+        const heroButton = document.getElementById('heroButton');
+        
+        heroButton.addEventListener('mouseenter', (e) => {
+            createParticles(e);
+        });
+
+        heroButton.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.7) {
+                createParticles(e);
+            }
+        });
+
+        function createParticles(e) {
+            const buttonRect = heroButton.getBoundingClientRect();
+            const x = e.clientX - buttonRect.left;
+            const y = e.clientY - buttonRect.top;
+            
+            for (let i = 0; i < 3; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'btn-particle';
+                particle.style.left = `${x}px`;
+                particle.style.top = `${y}px`;
+                
+                const size = Math.random() * 3 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 30 + 20;
+                const targetX = Math.cos(angle) * distance;
+                const targetY = Math.sin(angle) * distance;
+                
+                particle.style.setProperty('--target-x', `${targetX}px`);
+                particle.style.setProperty('--target-y', `${targetY}px`);
+                
+                heroButton.appendChild(particle);
+                
+                particle.animate([
+                    { 
+                        transform: 'translate(0, 0) scale(1)',
+                        opacity: 1
+                    },
+                    { 
+                        transform: `translate(${targetX}px, ${targetY}px) scale(0)`,
+                        opacity: 0
+                    }
+                ], {
+                    duration: Math.random() * 600 + 400,
+                    easing: 'cubic-bezier(0.165, 0.84, 0.44, 1)'
+                }).onfinish = () => {
+                    particle.remove();
+                };
+            }
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+                
+                // Close mobile menu if open
+                if (window.innerWidth <= 768 && menuOpen) {
+                    menuToggle.click();
+                }
+            });
+        });
+
+        // Add CSS for fade animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(-10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            @keyframes fadeOut {
+                from { opacity: 1; transform: translateY(0); }
+                to { opacity: 0; transform: translateY(-10px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
 </html>
